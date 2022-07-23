@@ -1,6 +1,3 @@
-//MongoDB PW: RuKgA0EcZh4waX3n
-//MongoDB connection:  mongodb+srv://onewiththeinternet:<password>@cluster0.fwyqr.mongodb.net/?retryWrites=true&w=majority
-
 const express = require('express');
 
 const app = express();
@@ -10,7 +7,6 @@ app.use(express.json());
 const mongoose = require('mongoose');
 
 const userRoutes = require('./routes/user');
-
 
 //MongoDB through Mongoose connection
 mongoose.connect('mongodb+srv://onewiththeinternet:RuKgA0EcZh4waX3n@cluster0.fwyqr.mongodb.net/?retryWrites=true&w=majority')
@@ -22,22 +18,18 @@ mongoose.connect('mongodb+srv://onewiththeinternet:RuKgA0EcZh4waX3n@cluster0.fwy
     console.error(error);
 });
 
-
-/**
- * This allows HTTP calls between servers
- * Prevents cross-origin resourse sharing (CORS) errors
- */
- app.use((req, res, next) => {
+//Prevents cross-origin resourse sharing (CORS) errors
+app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-  console.log('headers are working');
   next();
 });
 
-
-//importing API routes
+//importing routes
 app.use('/api/auth', userRoutes);
+//API test
+app.use('/', userRoutes);
 
 
 module.exports = app;
