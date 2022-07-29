@@ -28,8 +28,6 @@ app.use((req, res, next) => {
 
 //importing routes
 app.use('/api/auth', userRoutes);
-//API test
-app.use('/', userRoutes);
 
 
 module.exports = app;

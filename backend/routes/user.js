@@ -7,7 +7,7 @@ const userCtrl = require('../controllers/user');
 //creates an new user account in the data base
 router.post("/signup", userCtrl.createUser);
 
-//generic API test
-router.use('/', userCtrl.testAPI);
+//logs users in
+router.post('/login', userCtrl.login);
 
 module.exports = router;
