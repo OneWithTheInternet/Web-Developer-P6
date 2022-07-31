@@ -1,12 +1,10 @@
 const express = require('express');
-
 const app = express();
-
 app.use(express.json());
-
 const mongoose = require('mongoose');
-
 const userRoutes = require('./routes/user');
+const sauceRoutes = require('./routes/sauce');
+
 
 //MongoDB through Mongoose connection
 mongoose.connect('mongodb+srv://onewiththeinternet:RuKgA0EcZh4waX3n@cluster0.fwyqr.mongodb.net/?retryWrites=true&w=majority')
@@ -26,8 +24,11 @@ app.use((req, res, next) => {
   next();
 });
 
-//importing routes
+//importing user routes
 app.use('/api/auth', userRoutes);
+
+//importing souce routes
+app.use('/api/sauces', sauceRoutes);
 
 
 module.exports = app;
