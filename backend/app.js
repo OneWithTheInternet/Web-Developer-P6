@@ -4,6 +4,7 @@ app.use(express.json());
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
+const path = require('path');
 
 
 //MongoDB through Mongoose connection
@@ -23,6 +24,9 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
+
+//Asking express app to serve images folder endpoint
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 //importing user routes
 app.use('/api/auth', userRoutes);
