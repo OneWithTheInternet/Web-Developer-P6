@@ -14,7 +14,7 @@ router.get('/:id', auth, sauceCtrl.displayOne);
 
 router.post('/:id/like', auth, sauceCtrl.changeLikeState);
 
-router.put("/:id", auth, multer, sauceCtrl.modefySauce);
+router.put("/:id", auth, multer, sauceCtrl.modifySauce);
 
 router.delete('/:id', auth, sauceCtrl.deleteSauce);
 
