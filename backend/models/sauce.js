@@ -11,6 +11,7 @@ const sauceSchema = mongoose.Schema({
     mainPepper: {type: String, required: true},
     usersLiked: {type: Array, required: true},
     usersDisliked: {type: Array, required: true},
+    userId: {type: String, required: true}
 });
 
 module.exports = mongoose.model('sauceModel', sauceSchema);

@@ -12,4 +12,11 @@ router.get('/', auth, sauceCtrl.displayAll);
 
 router.get('/:id', auth, sauceCtrl.displayOne);
 
+router.post('/:id/like', auth, sauceCtrl.changeLikeState);
+
+router.put("/:id", auth, multer, sauceCtrl.modefySauce);
+
+router.delete('/:id', auth, sauceCtrl.deleteSauce);
+
+
 module.exports = router;

@@ -5,10 +5,11 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
 const path = require('path');
+require('dotenv').config();
 
 
 //MongoDB through Mongoose connection
-mongoose.connect('mongodb+srv://onewiththeinternet:RuKgA0EcZh4waX3n@cluster0.fwyqr.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(process.env.URL)
   .then(() => {
     console.log('Successfully connected to MongoDB Atlas!');
   })
@@ -31,7 +32,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 //importing user routes
 app.use('/api/auth', userRoutes);
 
-//importing souce routes
+//importing sauce routes
 app.use('/api/sauces', sauceRoutes);
 
 
